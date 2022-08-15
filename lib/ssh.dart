@@ -66,7 +66,7 @@ class SSHClient {
       "port": port,
       "username": username,
       "passwordOrKey": passwordOrKey,
-    }).timeout(3);;
+    }).timeout(Duration(seconds: 2));;
     return result;
   }
 
