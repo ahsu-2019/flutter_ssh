@@ -60,14 +60,13 @@ class SSHClient {
   }
 
   Future<String> connect() async {
-    var result = await _channel.invokeMethod('connectToHost', {
+    var result = _channel.invokeMethod('connectToHost', {
       "id": id,
       "host": host,
       "port": port,
       "username": username,
       "passwordOrKey": passwordOrKey,
-    }).timeout(Duration(seconds: 2));
-    return result;
+    }).onError((error, stackTrace) => print(error));
   }
 
   Future<String> execute(String cmd) async {
